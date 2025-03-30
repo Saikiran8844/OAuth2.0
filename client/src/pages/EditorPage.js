@@ -23,8 +23,8 @@ const EditorPage = () => {
       }
 
       const url = type === "draft"
-        ? `http://localhost:5000/drafts/${id}`
-        : `http://localhost:5000/drive/fetch/${id}`;
+        ? `${process.env.APP_SERVER_URL}/drafts/${id}`
+        : `${process.env.APP_SERVER_URL}/drive/fetch/${id}`;
 
       try {
         const response = await axios.get(url, {

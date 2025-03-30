@@ -30,8 +30,8 @@ const Editor = ({ content, setContent }) => {
   
     try {
       await axios.post(
-        "http://localhost:5000/drafts",
-        { title: docName, content: extractedContent },  // 🔹 Change 'textContent' to 'content'
+        process.env.APP_SERVER_URL+"/drafts",
+        { title: docName, content: extractedContent },  
         { headers: { Authorization: `Bearer ${token}` } }
       );
       alert("Draft saved successfully!");
@@ -53,7 +53,7 @@ const Editor = ({ content, setContent }) => {
     
     try {
       await axios.post(
-        "http://localhost:5000/drive/upload",
+        "process.env.APP_SERVER_URL/drive/upload",
         { title: docName, textContent },
         { headers: { Authorization: `Bearer ${token}` } }
       );

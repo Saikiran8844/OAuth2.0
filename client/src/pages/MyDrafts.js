@@ -17,14 +17,14 @@ const MyDrafts = () => {
       if (!token) return alert("No token found! Please log in.");
 
       try {
-        const response = await axios.get("http://localhost:5000/drafts", {
+        const response = await axios.get(process.env.APP_SERVER_URL+"/drafts", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setDrafts(response.data);
       } catch (error) {
         console.error("Error fetching drafts:", error);
       } finally {
-        setLoading(false); // Stop loading after request is complete
+        setLoading(false); 
       }
     };
 
