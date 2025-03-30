@@ -50,7 +50,7 @@ client/
    ```
 3. Set up environment variables in `.env` file:
    ```
-   API_BASE_URL=process.env.APP_SERVER_URL
+   API_BASE_URL=process.env.REACT_APP_SERVER_URL
 
    ```
 4. Start the development server:

@@ -30,7 +30,7 @@ const Editor = ({ content, setContent }) => {
   
     try {
       await axios.post(
-        process.env.APP_SERVER_URL+"/drafts",
+        process.env.REACT_APP_SERVER_URL+"/drafts",
         { title: docName, content: extractedContent },  
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -53,7 +53,7 @@ const Editor = ({ content, setContent }) => {
     
     try {
       await axios.post(
-        "process.env.APP_SERVER_URL/drive/upload",
+        "process.env.REACT_APP_SERVER_URL/drive/upload",
         { title: docName, textContent },
         { headers: { Authorization: `Bearer ${token}` } }
       );

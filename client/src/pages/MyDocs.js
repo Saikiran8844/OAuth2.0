@@ -17,7 +17,8 @@ const MyDocs = () => {
       if (!token) return alert("No token found! Please log in.");
 
       try {
-        const response = await axios.get(process.env.APP_SERVER_URL+"/drive", {
+        console.log("env"+ process.env.REACT_APP_SERVER_URL);
+        const response = await axios.get(process.env.REACT_APP_SERVER_URL+"/drive", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setDocs(response.data.files || []);

@@ -10,10 +10,10 @@ const EditorPage = () => {
   const { id, type } = useParams(); 
   const navigate = useNavigate();
   const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(!!id); // Show loader only if fetching an existing document
+  const [loading, setLoading] = useState(!!id); 
 
   useEffect(() => {
-    if (!id) return; // If there's no ID, it's a new document, so skip fetching
+    if (!id) return; 
 
     const fetchData = async () => {
       const token = localStorage.getItem("token");
@@ -23,9 +23,9 @@ const EditorPage = () => {
       }
 
       const url = type === "draft"
-        ? `${process.env.APP_SERVER_URL}/drafts/${id}`
-        : `${process.env.APP_SERVER_URL}/drive/fetch/${id}`;
-
+        ? `${process.env.REACT_APP_SERVER_URL}/drafts/${id}`
+        : `${process.env.REACT_APP_SERVER_URL}/drive/fetch/${id}`;
+      console.log( "url"+ url);
       try {
         const response = await axios.get(url, {
           headers: { Authorization: `Bearer ${token}` },

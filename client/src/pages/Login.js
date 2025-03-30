@@ -3,11 +3,12 @@ import { Box, Button, TextField, Typography, Divider } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import { Link } from "react-router-dom";
 
-// Update to use environment variable for server URL
-const SERVER_URL = process.env.APP_SERVER_URL || "http://localhost:5000";
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const Login = () => {
-  const [isSignUp, setIsSignUp] = useState(false); // Toggle state
+  const [isSignUp, setIsSignUp] = useState(false); 
+
+  console.log("Server URL:", process.env.REACT_APP_SERVER_URL);
 
   const handleGoogleLogin = () => {
     window.location.href = `${SERVER_URL}/auth/google`;

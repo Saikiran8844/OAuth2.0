@@ -6,18 +6,19 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 
+
 const MyDrafts = () => {
   const [drafts, setDrafts] = useState([]);
-  const [loading, setLoading] = useState(true); // State for loading
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDrafts = async () => {
       const token = localStorage.getItem("token");
       if (!token) return alert("No token found! Please log in.");
-
+      const SERVER_URL = process.env.REACT_APP_SERVER_URL;
       try {
-        const response = await axios.get(process.env.APP_SERVER_URL+"/drafts", {
+        const response = await axios.get( SERVER_URL+'/drafts', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setDrafts(response.data);
