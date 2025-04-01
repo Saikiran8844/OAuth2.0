@@ -35,6 +35,7 @@ const Editor = ({ content, setContent }) => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       alert("Draft saved successfully!");
+      content="";
       handleCloseDialog();
     } catch (error) {
       console.error("Error saving:", error);
@@ -53,11 +54,13 @@ const Editor = ({ content, setContent }) => {
     
     try {
       await axios.post(
-        "process.env.REACT_APP_SERVER_URL/drive/upload",
+        process.env.REACT_APP_SERVER_URL+"/drive/upload",
         { title: docName, textContent },
         { headers: { Authorization: `Bearer ${token}` } }
       );
+      content="";
       alert("Uploaded to Google Drive!");
+      
       handleCloseDialog();
     } catch (error) {
       console.error("Error uploading:", error);

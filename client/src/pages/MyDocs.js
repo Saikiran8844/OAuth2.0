@@ -33,9 +33,9 @@ const MyDocs = () => {
   }, []);
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", direction: "column" }}>
       <Sidebar />
-      <div style={{ flex: 1 }}>
+      <div >
         <Navbar />
         <Box sx={{ padding: 3, margin: 5 }}>
           <Typography variant="h4" gutterBottom>
@@ -48,16 +48,16 @@ const MyDocs = () => {
               <CircularProgress />
             </Box>
           ) : docs.length > 0 ? (
-            <Box sx={{ display: "flex", overflowX: "auto", gap: 2, padding: 2 }}>
+            <Box sx={{ overflowX: "auto" }}>
               {docs.map((doc) => (
                 <Card
                   key={doc.id}
                   sx={{
                     display: "flex",
-                    padding: 1,
+                    margin: "5px",
                     cursor: "pointer",
                     borderRadius: 1,
-                    minWidth: "250px",
+                    minWidth: "150vh",
                     height: "40px",
                     border: "1px solid #ddd",
                   }}
