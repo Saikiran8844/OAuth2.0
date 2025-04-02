@@ -28,13 +28,14 @@ router.get("/google/callback", async (req, res) => {
   const oauth2 = google.oauth2({ version: "v2", auth: oauth2Client });
   const userInfo = await oauth2.userinfo.get();
 
+  const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000"; 
   // Create JWT token
   const token = jwt.sign(
     { email: userInfo.data.email, name: userInfo.data.name, googleToken: tokens.access_token },
     process.env.JWT_SECRET,
     { expiresIn: "10h" }
   );
-  res.redirect(`http://localhost:3000/editor?token=${token}`);
+  res.redirect(`${frontendUrl}/editor?token=${token}`);
 });
 
 module.exports = router;
